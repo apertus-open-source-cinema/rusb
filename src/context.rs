@@ -183,7 +183,7 @@ impl Context {
     }
 }
 
-extern "C" fn hotplug_callback(
+extern "system" fn hotplug_callback(
     _ctx: *mut libusb_context,
     device: *mut libusb_device,
     event: libusb_hotplug_event,

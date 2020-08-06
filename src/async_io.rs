@@ -171,7 +171,7 @@ pub struct AsyncGroup<'d> {
 }
 
 /// The libusb transfer completion callback. Careful: libusb may call this on any thread!
-extern "C" fn async_group_callback(transfer: *mut libusb_transfer) {
+extern "system" fn async_group_callback(transfer: *mut libusb_transfer) {
     unsafe {
         let callback_data: &CallbackData = &*((*transfer).user_data as *const CallbackData);
         let mut completed = callback_data.completed.lock().unwrap();
